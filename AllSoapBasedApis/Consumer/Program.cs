@@ -18,7 +18,7 @@ var testAsmxEndpoint = "https://localhost:44362/SampleAsmxService.asmx?wsdl";
 var testAsmxEndpointAddress = new EndpointAddress(testAsmxEndpoint);
 using (var testWcfClient = new SampleAsmxService.SampleAsmxServiceSoapClient(httpsBinding, testAsmxEndpointAddress))
 {
-    // Point to note, if the all contracts return Task<T> instead of T
+    // Point to note, all contracts return Task<T> instead of T
     var intResult = testWcfClient.PerformCountAsync(strInput).Result;
     Console.WriteLine("With Client - Count - {0}", intResult.Body.PerformCountResult);
 

@@ -1,7 +1,6 @@
-﻿using Core;
-using Core.Responses;
+﻿using Core.Responses;
 
-namespace SoapCoreNCoreWcfService
+namespace Core
 {
     public class SampleService : ISampleServiceExtended
     {

@@ -3,7 +3,6 @@ using CoreWCF;
 using CoreWCF.Configuration;
 using CoreWCF.Description;
 using SoapCore;
-using SoapCoreNCoreWcfService;
 
 var builder = WebApplication.CreateBuilder(args);
 

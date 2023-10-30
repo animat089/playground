@@ -3,6 +3,7 @@
 The sample ran for over 3 hours, to be able to collect these details:
 
 ```txt
+// * Detailed results *
 IterationSamples.Array_For: DefaultJob [Size=10]
 Runtime = .NET 6.0.24 (6.0.2423.51814), X64 RyuJIT AVX2; GC = Concurrent Workstation
 Mean = 3.305 ns, StdErr = 0.023 ns (0.70%), N = 20, StdDev = 0.104 ns
@@ -824,12 +825,4 @@ Skewness = 0.36, Kurtosis = 2.58, MValue = 2
 [2.134 ms ; 2.187 ms) | @
 [2.187 ms ; 2.319 ms) | @@@@@@@@@@@@@
 ---------------------------------------------------
-
-// * Summary *
-
-BenchmarkDotNet v0.13.9+228a464e8be6c580ad9408e98f18813f6407fb5a, Windows 10 (10.0.19045.3636/22H2/2022Update)
-11th Gen Intel Core i7-1165G7 2.80GHz, 1 CPU, 8 logical and 4 physical cores
-.NET SDK 7.0.306
-  [Host]     : .NET 6.0.24 (6.0.2423.51814), X64 RyuJIT AVX2
-  DefaultJob : .NET 6.0.24 (6.0.2423.51814), X64 RyuJIT AVX2
 ```

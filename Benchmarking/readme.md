@@ -1,6 +1,28 @@
 # Benchmarking
 Here, we are trying to shocase the results of the benchmarking projects we have done with .NET 6.0
 
+```txt
+// * Summary *
+
+BenchmarkDotNet v0.13.9+228a464e8be6c580ad9408e98f18813f6407fb5a, Windows 10 (10.0.19045.3636/22H2/2022Update)
+11th Gen Intel Core i7-1165G7 2.80GHz, 1 CPU, 8 logical and 4 physical cores
+.NET SDK 7.0.306
+  [Host]     : .NET 6.0.24 (6.0.2423.51814), X64 RyuJIT AVX2
+  DefaultJob : .NET 6.0.24 (6.0.2423.51814), X64 RyuJIT AVX2
+``` 
+
+## Mapping
+
+| Method               | Mean      | Error     | StdDev    | Allocated |
+|--------------------- |----------:|----------:|----------:|----------:|
+| XmlDocToModelMapping | 10.373 us | 0.1684 us | 0.2949 us |  15.84 KB |
+| ModelToModelMapping  |  2.260 us | 0.0441 us | 0.0573 us |   2.49 KB |
+| AutoMapperMapping    |  2.583 us | 0.0439 us | 0.0925 us |   2.68 KB |
+| XsltXMLMapping       | 18.056 us | 0.3144 us | 0.2940 us |  41.54 KB |
+| XsltJsonMapping      |  8.359 us | 0.1631 us | 0.2062 us |  37.46 KB |
+| XsltTextMapping      |  3.338 us | 0.0383 us | 0.0320 us |  17.66 KB |
+
+
 ## Iterations
 For detailed results/histograms, please visit the internal folders...
 

@@ -1,8 +1,9 @@
 ﻿using BenchmarkDotNet.Attributes;
+using BenchMarking.Iterations;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Iterations;
+namespace Benchmarking.Iterations;
 
 [MemoryDiagnoser(false)]
 public class IterationSamples
@@ -71,7 +72,7 @@ public class IterationSamples
     }
 
     [Benchmark]
-    public void Array_ForMemoryMarshalSpanUsafe()
+    public void Array_ForMemoryMarshalSpanUnsafe()
     {
         ref var itemRef = ref MemoryMarshal.GetArrayDataReference(sampleSetArray);
         for (int iterator = 0; iterator < sampleSetArray.Length; iterator++)

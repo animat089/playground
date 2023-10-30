@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<person>
+		<name>John Doe</name>
+		<position>Manager</position>
+		<age>30</age>
+	</person>
+	<book>
+		<title>XML Essentials</title>
+		<author>Alice Johnson</author>
+		<publicationYear>2022</publicationYear>
+	</book>
+	<company>
+		<name>ABC Corporation</name>
+		<city>Chicago</city>
+		<state>IL</state>
+	</company>
+</root>

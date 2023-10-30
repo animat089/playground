@@ -1,4 +1,4 @@
-﻿namespace Iterations;
+﻿namespace BenchMarking.Iterations;
 
 internal static class ListGenerator
 {

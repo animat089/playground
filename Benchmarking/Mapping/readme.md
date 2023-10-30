@@ -1,6 +1,6 @@
 # Detailed Performance
 
-The sample ran for over 3 hours, to be able to collect these details:
+The sample ran for over a couple of minutes, to be able to collect these details:
 
 ```txt
 // * Detailed results *

@@ -1,4 +1,4 @@
-﻿using Animatlabs.ReactiveProgramming.Sample;
+﻿using ReactiveProgramming;
 
 var quit = false;
 
@@ -7,7 +7,8 @@ while (!quit)
     Console.Clear();
     Console.WriteLine("1. Range Sorter");
     Console.WriteLine("2. Folder Watcher");
-    Console.WriteLine("3. Quit");
+    Console.WriteLine("3. Stock Tracker");
+    Console.WriteLine("4. Quit");
     var key = Console.ReadKey();
     Console.WriteLine();
 
@@ -22,6 +23,10 @@ while (!quit)
             break;
 
         case '3':
+            TempTracker.Main();//StockPriceTracker.StartTracking();
+            break;
+
+        case '4':
             quit = true;
             break;
 

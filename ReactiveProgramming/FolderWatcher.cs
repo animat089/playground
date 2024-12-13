@@ -1,7 +1,7 @@
 ﻿using System.Reactive.Disposables;
 using System.Reactive.Linq;
 
-namespace Animatlabs.ReactiveProgramming.Sample;
+namespace ReactiveProgramming;
 
 internal class FolderWatcher
 {

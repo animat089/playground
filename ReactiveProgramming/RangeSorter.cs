@@ -1,6 +1,6 @@
 ﻿using System.Reactive.Linq;
 
-namespace Animatlabs.ReactiveProgramming.Sample;
+namespace ReactiveProgramming;
 
 internal class RangeSorter
 {

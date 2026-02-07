@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Animatlabs.Api.Models\Animatlabs.Api.Models.csproj" />
+    <ProjectReference Include="..\AnimatLabs.Api.Models\AnimatLabs.Api.Models.csproj" />
   </ItemGroup>
 
 </Project>

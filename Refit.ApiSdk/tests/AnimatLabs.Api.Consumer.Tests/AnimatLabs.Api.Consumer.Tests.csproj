@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Animatlabs.Api.Models\Animatlabs.Api.Models.csproj" />
+    <ProjectReference Include="..\..\src\AnimatLabs.Api.Models\AnimatLabs.Api.Models.csproj" />
     <ProjectReference Include="..\..\src\AnimatLabs.Api.Sdk\AnimatLabs.Api.Sdk.csproj" />
     <ProjectReference Include="..\..\src\AnimatLabs.Api.Consumer\AnimatLabs.Api.Consumer.csproj" />
     <ProjectReference Include="..\..\src\AnimatLabs.Api\AnimatLabs.Api.csproj" />

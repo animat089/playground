@@ -37,7 +37,7 @@ internal class Program
 
     private static void CachingAspect()
     {
-        // Chaching Aspect
+        // Caching Aspect
         ProductService productService = new ProductService();
 
         string result1 = productService.GetProductDetails(101);

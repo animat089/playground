@@ -5,7 +5,7 @@ using Sample.Hashed.Services.Contracts;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var dataProtecionProvider = DataProtectionProvider.Create("Sample.DataProtection", );
+var dataProtecionProvider = DataProtectionProvider.Create("Sample.DataProtection");
 builder.Services.AddSingleton<IDataProtector>(_ => dataProtecionProvider.CreateProtector("Encryption"));
 builder.Services.AddSingleton<IUserService, UserService>();
 

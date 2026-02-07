@@ -1,5 +1,6 @@
 # Benchmarking
-Here, we are trying to shocase the results of the benchmarking projects we have done with .NET 6.0
+
+Here, we are trying to showcase the results of the benchmarking projects we have done with .NET 6.0
 
 ```txt
 // * Summary *
@@ -9,7 +10,7 @@ BenchmarkDotNet v0.13.9+228a464e8be6c580ad9408e98f18813f6407fb5a, Windows 10 (10
 .NET SDK 7.0.306
   [Host]     : .NET 6.0.24 (6.0.2423.51814), X64 RyuJIT AVX2
   DefaultJob : .NET 6.0.24 (6.0.2423.51814), X64 RyuJIT AVX2
-``` 
+```
 
 ## Mapping
 
@@ -22,8 +23,8 @@ BenchmarkDotNet v0.13.9+228a464e8be6c580ad9408e98f18813f6407fb5a, Windows 10 (10
 | XsltJsonMapping      |  8.359 us | 0.1631 us | 0.2062 us |  37.46 KB |
 | XsltTextMapping      |  3.338 us | 0.0383 us | 0.0320 us |  17.66 KB |
 
-
 ## Iterations
+
 For detailed results/histograms, please visit the internal folders...
 
 | Method                          | Size   | Mean                  | Error                 | StdDev                | Median                | Allocated |

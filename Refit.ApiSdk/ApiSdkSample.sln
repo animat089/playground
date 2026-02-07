@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimatLabs.Api", "src\Anima
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8B410E07-B091-48D4-9C77-FB57D000D580}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Animatlabs.Api.Models", "src\Animatlabs.Api.Models\Animatlabs.Api.Models.csproj", "{3D63B71A-41EA-488C-AED3-7EF60704A4B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimatLabs.Api.Models", "src\AnimatLabs.Api.Models\AnimatLabs.Api.Models.csproj", "{3D63B71A-41EA-488C-AED3-7EF60704A4B1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimatLabs.Api.Sdk", "src\AnimatLabs.Api.Sdk\AnimatLabs.Api.Sdk.csproj", "{87061ACE-D11D-4827-A6B5-548204260A2F}"
 EndProject

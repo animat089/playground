@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9F28690D-5A8E-4FC0-B101-5277C648ED2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimatLabs.SourceGenerators.Attributes", "src\AnimatLabs.SourceGenerators.Attributes\AnimatLabs.SourceGenerators.Attributes.csproj", "{B17EC762-A39C-4981-8621-75A3DECCB293}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimatLabs.SourceGenerators", "src\AnimatLabs.SourceGenerators\AnimatLabs.SourceGenerators.csproj", "{97869CB0-486A-4CB5-A363-3639D293C28E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimatLabs.SourceGenerators.Demo", "src\AnimatLabs.SourceGenerators.Demo\AnimatLabs.SourceGenerators.Demo.csproj", "{ABF761CD-56CD-47C9-A8B1-76F5E04D4242}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1F7FF765-A64F-4230-905A-AD2BDA4FF4D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimatLabs.SourceGenerators.Tests", "tests\AnimatLabs.SourceGenerators.Tests\AnimatLabs.SourceGenerators.Tests.csproj", "{450F01D7-1085-452E-A7DB-96F216A885E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{7AB70BEB-8948-4321-9DAE-13786A375EDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimatLabs.SourceGenerators.T4", "tools\AnimatLabs.SourceGenerators.T4\AnimatLabs.SourceGenerators.T4.csproj", "{3ADFBE60-43EE-4DDC-96F6-18E744E95F0E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B17EC762-A39C-4981-8621-75A3DECCB293}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B17EC762-A39C-4981-8621-75A3DECCB293}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B17EC762-A39C-4981-8621-75A3DECCB293}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B17EC762-A39C-4981-8621-75A3DECCB293}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97869CB0-486A-4CB5-A363-3639D293C28E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97869CB0-486A-4CB5-A363-3639D293C28E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97869CB0-486A-4CB5-A363-3639D293C28E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97869CB0-486A-4CB5-A363-3639D293C28E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABF761CD-56CD-47C9-A8B1-76F5E04D4242}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABF761CD-56CD-47C9-A8B1-76F5E04D4242}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABF761CD-56CD-47C9-A8B1-76F5E04D4242}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABF761CD-56CD-47C9-A8B1-76F5E04D4242}.Release|Any CPU.Build.0 = Release|Any CPU
+		{450F01D7-1085-452E-A7DB-96F216A885E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{450F01D7-1085-452E-A7DB-96F216A885E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{450F01D7-1085-452E-A7DB-96F216A885E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{450F01D7-1085-452E-A7DB-96F216A885E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ADFBE60-43EE-4DDC-96F6-18E744E95F0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ADFBE60-43EE-4DDC-96F6-18E744E95F0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ADFBE60-43EE-4DDC-96F6-18E744E95F0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ADFBE60-43EE-4DDC-96F6-18E744E95F0E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B17EC762-A39C-4981-8621-75A3DECCB293} = {9F28690D-5A8E-4FC0-B101-5277C648ED2A}
+		{97869CB0-486A-4CB5-A363-3639D293C28E} = {9F28690D-5A8E-4FC0-B101-5277C648ED2A}
+		{ABF761CD-56CD-47C9-A8B1-76F5E04D4242} = {9F28690D-5A8E-4FC0-B101-5277C648ED2A}
+		{450F01D7-1085-452E-A7DB-96F216A885E1} = {1F7FF765-A64F-4230-905A-AD2BDA4FF4D5}
+		{3ADFBE60-43EE-4DDC-96F6-18E744E95F0E} = {7AB70BEB-8948-4321-9DAE-13786A375EDA}
+	EndGlobalSection
+EndGlobal

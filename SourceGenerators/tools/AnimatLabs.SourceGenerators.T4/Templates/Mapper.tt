@@ -1,0 +1,26 @@
+<#@ template language="C#" hostspecific="true" #>
+<#@ output extension=".cs" #>
+<#+
+    private readonly string mapperName = "UserMapper";
+    private readonly string sourceType = "User";
+    private readonly string targetType = "UserDto";
+    private readonly string[] properties = { "Id", "FirstName", "LastName", "Email" };
+#>
+namespace AnimatLabs.SourceGenerators.T4.Generated;
+
+public partial class <#= mapperName #>
+{
+    public <#= targetType #> ToDto(<#= sourceType #> entity)
+    {
+        if (entity == null)
+        {
+            return null!;
+        }
+
+        var target = new <#= targetType #>();
+<# foreach (var property in properties) { #>
+        target.<#= property #> = entity.<#= property #>;
+<# } #>
+        return target;
+    }
+}

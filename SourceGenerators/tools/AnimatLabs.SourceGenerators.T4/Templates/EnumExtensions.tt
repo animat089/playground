@@ -1,0 +1,41 @@
+<#@ template language="C#" hostspecific="true" #>
+<#@ output extension=".cs" #>
+<#+
+    private readonly (string EnumName, (string Name, string Display)[] Values) model =
+        ("OrderStatus", new[]
+        {
+            ("Pending", "Pending Approval"),
+            ("Processing", "In Progress"),
+            ("Shipped", "Shipped"),
+            ("Delivered", "Delivered"),
+            ("Cancelled", "Cancelled")
+        });
+#>
+namespace AnimatLabs.SourceGenerators.T4.Generated;
+
+public static class <#= model.EnumName #>Extensions
+{
+    public static string ToDisplayName(this <#= model.EnumName #> value) => value switch
+    {
+<# foreach (var entry in model.Values) { #>
+        <#= model.EnumName #>.<#= entry.Name #> => "<#= entry.Display #>",
+<# } #>
+        _ => value.ToString()
+    };
+
+    public static bool TryParse(string value, out <#= model.EnumName #> result)
+    {
+        switch (value)
+        {
+<# foreach (var entry in model.Values) { #>
+            case "<#= entry.Display #>":
+            case "<#= entry.Name #>":
+                result = <#= model.EnumName #>.<#= entry.Name #>;
+                return true;
+<# } #>
+            default:
+                result = default;
+                return false;
+        }
+    }
+}

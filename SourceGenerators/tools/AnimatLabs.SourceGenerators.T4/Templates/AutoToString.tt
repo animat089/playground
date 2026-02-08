@@ -1,0 +1,21 @@
+<#@ template language="C#" hostspecific="true" #>
+<#@ output extension=".cs" #>
+<#+
+    private readonly (string TypeName, string[] Properties) model =
+        ("Person", new[] { "FirstName", "LastName", "Age" });
+#>
+namespace AnimatLabs.SourceGenerators.T4.Generated;
+
+public partial class <#= model.TypeName #>
+{
+    public override string ToString()
+    {
+        return $"<#= model.TypeName #> {{ " +
+<# for (var i = 0; i < model.Properties.Length; i++) {
+       var property = model.Properties[i];
+       var suffix = i < model.Properties.Length - 1 ? ", " : string.Empty; #>
+            $"<#= property #> = {<#= property #>}<#= suffix #>" +
+<# } #>
+            " }";
+    }
+}

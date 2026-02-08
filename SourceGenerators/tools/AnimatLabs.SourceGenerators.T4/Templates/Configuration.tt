@@ -1,0 +1,65 @@
+<#@ template language="C#" hostspecific="true" #>
+<#@ output extension=".cs" #>
+<#+
+    private readonly string settingsType = "DatabaseSettings";
+    private readonly (string Name, string Kind)[] properties =
+    {
+        ("ConnectionString", "string"),
+        ("Timeout", "int"),
+        ("Retry", "complex")
+    };
+#>
+namespace AnimatLabs.SourceGenerators.T4.Generated;
+
+public static class <#= settingsType #>Binder
+{
+    public static <#= settingsType #> Bind(global::Microsoft.Extensions.Configuration.IConfiguration configuration)
+    {
+        if (configuration == null)
+        {
+            throw new global::System.ArgumentNullException(nameof(configuration));
+        }
+
+        var section = configuration.GetSection("Database");
+        return BindSection(section);
+    }
+
+    private static <#= settingsType #> BindSection(global::Microsoft.Extensions.Configuration.IConfiguration section)
+    {
+        var result = new <#= settingsType #>();
+<# foreach (var property in properties) { #>
+<# if (property.Kind == "string") { #>
+        var value<#= property.Name #> = section["<#= property.Name #>"];
+        if (!string.IsNullOrEmpty(value<#= property.Name #>))
+        {
+            result.<#= property.Name #> = value<#= property.Name #>!;
+        }
+<# } else if (property.Kind == "int") { #>
+        if (int.TryParse(section["<#= property.Name #>"], out var value<#= property.Name #>))
+        {
+            result.<#= property.Name #> = value<#= property.Name #>;
+        }
+<# } else { #>
+        result.<#= property.Name #> = BindRetry(section.GetSection("Retry"));
+<# } #>
+<# } #>
+        return result;
+    }
+
+    private static RetrySettings BindRetry(global::Microsoft.Extensions.Configuration.IConfiguration section)
+    {
+        var result = new RetrySettings();
+
+        if (int.TryParse(section["MaxAttempts"], out var valueMaxAttempts))
+        {
+            result.MaxAttempts = valueMaxAttempts;
+        }
+
+        if (int.TryParse(section["DelayMs"], out var valueDelayMs))
+        {
+            result.DelayMs = valueDelayMs;
+        }
+
+        return result;
+    }
+}

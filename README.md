@@ -33,6 +33,8 @@ Performance benchmarking projects using BenchmarkDotNet (.NET 6.0):
   - AutoMapper
   - XSLT transformations (XML, JSON, Text)
 
+- See: [Benchmarking/readme.md](Benchmarking/readme.md)
+
 ### HashId.NET
 
 Sample ASP.NET Core Web API demonstrating:
@@ -67,6 +69,16 @@ Complete API SDK implementation using Refit:
 - API contracts and models
 - Consumer application
 - Unit tests
+
+### SourceGenerators
+
+Source generator samples demonstrating:
+
+- Defining custom attributes
+- Generating code at compile time
+- A small demo app showing the generated output
+
+- See: [SourceGenerators/README.md](SourceGenerators/README.md)
 
 ### WorkflowForge
 

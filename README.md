@@ -68,6 +68,17 @@ Complete API SDK implementation using Refit:
 - Consumer application
 - Unit tests
 
+### WorkflowForge
+
+Scheduled workflows sample demonstrating a clean separation of responsibilities:
+
+- **Coravel** handles **when** to run a job (scheduling + overlap prevention)
+- **WorkflowForge** handles **what** to run (a multi-step workflow with shared state and automatic compensation)
+
+The sample is “real-world shaped” on purpose: it includes multiple steps (fetch orders → charge payments → reserve inventory → send emails) so you can see the value of orchestration and rollback/compensation when failures occur.
+
+- See: [WorkflowForge/README.md](WorkflowForge/README.md)
+
 ## 🎯 Purpose
 
 This repository serves as:

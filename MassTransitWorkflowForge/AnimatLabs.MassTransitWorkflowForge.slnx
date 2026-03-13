@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="AnimatLabs.MassTransitWorkflowForge.Contracts/AnimatLabs.MassTransitWorkflowForge.Contracts.csproj" />
+  <Project Path="AnimatLabs.MassTransitWorkflowForge.OrderService/AnimatLabs.MassTransitWorkflowForge.OrderService.csproj" />
+</Solution>

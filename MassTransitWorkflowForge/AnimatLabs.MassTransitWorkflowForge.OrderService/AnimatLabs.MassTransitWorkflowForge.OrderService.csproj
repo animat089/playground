@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-AnimatLabs.MassTransitWorkflowForge.OrderService-03c7c720-4600-4c1c-9e2a-773ccd19c2ff</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MassTransit.RabbitMQ" Version="9.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+    <PackageReference Include="WorkflowForge" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AnimatLabs.MassTransitWorkflowForge.Contracts\AnimatLabs.MassTransitWorkflowForge.Contracts.csproj" />
+  </ItemGroup>
+</Project>

@@ -91,6 +91,45 @@ The sample is “real-world shaped” on purpose: it includes multiple steps (fe
 
 - See: [WorkflowForge/README.md](WorkflowForge/README.md)
 
+### HtmxWorkflowForge
+
+Real-time workflow dashboard with **zero JavaScript frameworks**:
+
+- **HTMX + Server-Sent Events** stream workflow step updates to the browser in real time
+- **WorkflowForge 2.1.1** orchestrates a 5-step order processing workflow with automatic compensation
+- Click "Run with Failure" to watch compensation cascade live
+
+- See: [HtmxWorkflowForge/README.md](HtmxWorkflowForge/README.md)
+
+### MassTransitWorkflowForge
+
+The saga pattern with actual compensation code:
+
+- **MassTransit** distributes messages (InMemory transport for easy demo, RabbitMQ config included)
+- **WorkflowForge 2.1.1** runs a multi-step order saga with automatic rollback on failure
+- Orders over $500 simulate payment failure to trigger compensation
+
+- See: [MassTransitWorkflowForge/README.md](MassTransitWorkflowForge/README.md)
+
+### SemanticKernelWorkflowForge
+
+AI agent pipeline with rollback:
+
+- **Semantic Kernel + Ollama** runs a 5-step content pipeline (classify, research, draft, quality check, publish)
+- **WorkflowForge 2.1.1** compensates when the quality check rejects the output
+- 100% local execution, zero cloud, zero cost
+
+- See: [SemanticKernelWorkflowForge/README.md](SemanticKernelWorkflowForge/README.md)
+
+### SpectreConsole
+
+Beautiful CLI output with Spectre.Console:
+
+- Tables, trees, bar charts, progress spinners, FigletText
+- "Project Health Checker" demo showcasing all major Spectre features
+
+- See: [SpectreConsole/README.md](SpectreConsole/README.md)
+
 ## 🎯 Purpose
 
 This repository serves as:

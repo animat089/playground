@@ -18,11 +18,13 @@ Uses InMemory transport. Auto-submits two test orders:
 
 Edit `Program.cs`: comment out `UsingInMemory`, uncomment `UsingRabbitMq`.
 
-RabbitMQ from `docker-compose.azure-local.yml` runs on port **5673** (not 5672):
+Start RabbitMQ:
 
 ```bash
-docker-compose -f docker-compose.azure-local.yml up rabbitmq -d
+docker-compose up -d
 ```
+
+Management UI at http://localhost:15672 (guest/guest).
 
 ## Requirements
 

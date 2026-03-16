@@ -52,7 +52,7 @@ Single-service demo. MassTransit consumer receives `SubmitOrder`, triggers a Wor
 dotnet run --project AnimatLabs.WorkflowForge.MassTransitSaga.OrderService
 ```
 
-Uses InMemory transport by default. RabbitMQ optional (port 5673 in `docker-compose.azure-local.yml`).
+Uses InMemory transport by default. RabbitMQ optional -- see OrderService README.
 
 **Blog post:** [MassTransit Saga + WorkflowForge Compensation](https://animatlabs.com)
 

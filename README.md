@@ -34,7 +34,7 @@ Production monitoring setup with health checks, Prometheus, and Grafana:
 - Liveness and readiness health check endpoints
 - Custom Prometheus metrics (order duration histogram, success/failure counters)
 - PostgreSQL health check integration
-- Runs against `docker-compose.azure-local.yml`
+- Requires Docker for PostgreSQL, Prometheus, Grafana
 
 - See: [DotNetMonitoring/README.md](DotNetMonitoring/README.md)
 

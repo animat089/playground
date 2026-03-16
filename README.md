@@ -4,7 +4,7 @@ Code samples and demos for [animatlabs.com](https://animatlabs.com) blog posts.
 
 ## Projects
 
-### WorkflowForge (Solution -- 5 projects)
+### WorkflowForge (Solution -- 4 projects)
 
 All WorkflowForge demos consolidated under one solution: `AnimatLabs.WorkflowForge.sln`
 

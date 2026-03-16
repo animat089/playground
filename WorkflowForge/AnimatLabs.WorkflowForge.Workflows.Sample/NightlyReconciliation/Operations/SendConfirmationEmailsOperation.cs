@@ -17,8 +17,6 @@ public sealed class SendConfirmationEmailsOperation : WorkflowOperationBase
 
     public override string Name => "SendConfirmationEmails";
 
-    public override bool SupportsRestore => true;
-
     protected override async Task<object?> ForgeAsyncCore(
         object? inputData,
         IWorkflowFoundry foundry,

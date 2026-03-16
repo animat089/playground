@@ -17,8 +17,6 @@ public sealed class ProcessPaymentsOperation : WorkflowOperationBase
 
     public override string Name => "ProcessPayments";
 
-    public override bool SupportsRestore => true;
-
     protected override async Task<object?> ForgeAsyncCore(
         object? inputData,
         IWorkflowFoundry foundry,

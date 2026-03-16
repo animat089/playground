@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Server-Sent Events in .NET</title>
+    <style>
+        body { font-family: system-ui, sans-serif; max-width: 700px; margin: 2em auto; padding: 0 1em; }
+        h2 { margin-top: 1.5em; }
+        .endpoint { font-family: monospace; color: #555; font-size: 0.9em; }
+        .output { font-family: monospace; border: 1px solid #ccc; padding: 0.75em; min-height: 80px; max-height: 200px; overflow-y: auto; margin-top: 0.5em; }
+        #clock { font-size: 1.5em; padding: 0.5em 0; }
+    </style>
+</head>
+<body>
+    <h1>Server-Sent Events in .NET</h1>
+    <p>Three SSE patterns. ASP.NET Core Minimal APIs. Native EventSource on the client.</p>
+
+    <h2>Live Clock</h2>
+    <p>Simplest SSE: one event type, one value, every second.</p>
+    <p class="endpoint">GET /events/clock</p>
+    <div class="output">
+        <div id="clock">--:--:--</div>
+    </div>
+
+    <h2>Order Stream</h2>
+    <p>Named events: "placed" and "cancelled" on one connection.</p>
+    <p class="endpoint">GET /events/orders</p>
+    <div class="output" id="orders"></div>
+
+    <h2>System Metrics</h2>
+    <p>Event IDs for auto-reconnection. JSON payloads.</p>
+    <p class="endpoint">GET /events/metrics</p>
+    <div class="output" id="metrics">
+        <div>CPU: <span id="cpu">--%</span></div>
+        <div>Memory: <span id="mem">--%</span></div>
+        <div>Sequence: <span id="seq">--</span></div>
+    </div>
+
+    <p><small><a href="https://animatlabs.com">AnimatLabs</a> -- SSE Playground</small></p>
+
+    <script>
+        var clock = new EventSource('/events/clock');
+        clock.onmessage = function(e) {
+            document.getElementById('clock').textContent = e.data;
+        };
+
+        var orders = new EventSource('/events/orders');
+        orders.addEventListener('placed', function(e) { addOrderLine(e.data, 'placed'); });
+        orders.addEventListener('cancelled', function(e) { addOrderLine(e.data, 'cancelled'); });
+
+        function addOrderLine(text, type) {
+            var el = document.getElementById('orders');
+            var line = document.createElement('div');
+            line.textContent = '[' + type.toUpperCase() + '] ' + text;
+            el.prepend(line);
+            while (el.children.length > 20) el.removeChild(el.lastChild);
+        }
+
+        var metrics = new EventSource('/events/metrics');
+        metrics.onmessage = function(e) {
+            var d = JSON.parse(e.data);
+            document.getElementById('cpu').textContent = d.cpu + '%';
+            document.getElementById('mem').textContent = d.mem + '%';
+            document.getElementById('seq').textContent = '#' + d.seq;
+        };
+    </script>
+</body>
+</html>

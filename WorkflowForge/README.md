@@ -1,83 +1,62 @@
-# WorkflowForge + Coravel: Scheduled Workflows Sample
+# WorkflowForge Playground
 
-This sample demonstrates the pattern:
+All WorkflowForge demo projects live in this solution. One `dotnet build` builds everything.
 
-- Coravel handles **when** to run
-- WorkflowForge handles **what** to run (multi-step workflow + compensation)
+## Solution Layout
 
-## What we’re trying to achieve
-
-Show a runnable example of scheduled workflow orchestration where:
-
-- scheduling and infrastructure concerns stay in a small host project
-- business logic stays in a separate workflows project
-- failures automatically trigger compensation (refunds + inventory release)
-
-## Solution layout
-
-The runnable solution is in this folder:
-
-- `AnimatLabs.WorkflowForge.sln`
-
-Projects:
-
-- `AnimatLabs.WorkflowForge.CoravelScheduledWorkflows` (console host + Coravel scheduler + fake implementations)
-- `AnimatLabs.WorkflowForge.Workflows.Sample` (workflow builder + operations + models + service interfaces)
-
-This example is “real-world shaped” because it’s demonstrating the multi-step orchestration **plus** compensation (the saga/rollback story). If your job is truly a single step with no rollback needs, you can (and probably should) keep it much simpler—see **Minimal alternative** below.
-
-## Run
-
-From this folder:
-
-```bash
-dotnet run --project AnimatLabs.WorkflowForge.CoravelScheduledWorkflows/AnimatLabs.WorkflowForge.CoravelScheduledWorkflows.csproj
+```
+AnimatLabs.WorkflowForge.sln
+├── AnimatLabs.WorkflowForge.Workflows.Sample            (all workflow definitions + abstractions)
+├── AnimatLabs.WorkflowForge.CoravelScheduledWorkflows   (Coravel + WF scheduled jobs)
+├── AnimatLabs.WorkflowForge.HtmxDashboard               (HTMX SSE + WF real-time dashboard)
+└── AnimatLabs.WorkflowForge.MassTransitSaga.OrderService (MassTransit consumer + WF saga)
 ```
 
-## Configure
-
-Edit `appsettings.json`:
-
-- `ReconciliationJob:ScheduleSeconds` controls how often the job runs
-- `ReconciliationJob:DemoFailure` toggles a simulated failure so you can see compensation execute
-
-You can also override these from the command line:
+## Build All
 
 ```bash
-
-dotnet run --project AnimatLabs.WorkflowForge.CoravelScheduledWorkflows/AnimatLabs.WorkflowForge.CoravelScheduledWorkflows.csproj -- \
-	ReconciliationJob:ScheduleSeconds=2 \
-	ReconciliationJob:DemoFailure=true
+dotnet build AnimatLabs.WorkflowForge.sln
 ```
 
-Tip (Linux/macOS): if you want to run this briefly, wrap it with `timeout`:
+## Projects
+
+### Coravel + WorkflowForge (Scheduled Workflows)
+
+Coravel schedules runs; WorkflowForge defines the steps. Reconciliation workflow that rolls back on failure.
 
 ```bash
-timeout 12s dotnet run --project AnimatLabs.WorkflowForge.CoravelScheduledWorkflows/AnimatLabs.WorkflowForge.CoravelScheduledWorkflows.csproj -- \
-	ReconciliationJob:ScheduleSeconds=2 \
-	ReconciliationJob:DemoFailure=false
+dotnet run --project AnimatLabs.WorkflowForge.CoravelScheduledWorkflows
 ```
 
-## Why the example has multiple steps
+Toggle failure in `appsettings.json` via `ReconciliationJob:DemoFailure`.
 
-If the goal was only “run something every N seconds,” Coravel alone is enough.
+**Blog post:** [WorkflowForge + Coravel: Scheduled Workflows](https://animatlabs.com)
 
-This sample adds steps (payments + inventory + emails) because:
+### HTMX Dashboard (Real-Time Workflow Visualization)
 
-- It shows **state changes** that must be undone if a later step fails.
-- It proves the “automatic compensation” value prop in logs (refund + inventory release).
-- It matches the common integration-job reality: *fetch → mutate external systems → notify*.
+HTMX SSE extension streams workflow step updates to the browser. No custom JavaScript. Buttons fire `hx-get` to fetch an SSE-connected fragment, then HTMX swaps HTML as each step completes or compensates.
 
-## Compensation rule (important)
+```bash
+dotnet run --project AnimatLabs.WorkflowForge.HtmxDashboard
+```
 
-WorkflowForge only performs compensation when the workflow reports it supports restore.
-In v2, that is computed from the operations: the workflow is restorable only when **all operations** are restorable.
+Open `http://localhost:5075`. Click "Run Order Workflow" or "Run with Failure."
 
-That’s why some “non-mutating” operations in this sample still implement `SupportsRestore = true` with a no-op `RestoreAsync(...)`: it enables compensation for the steps that really need it (payments + inventory).
+**Blog post:** [HTMX + WorkflowForge: Live Workflow Dashboard](https://animatlabs.com)
 
-## Minimal alternative (when you don’t need compensation)
+### MassTransit Saga (Message-Driven Compensation)
 
-If your scheduled job is a single action (or you’re fine handling failures inline), keep it simple:
+Single-service demo. MassTransit consumer receives `SubmitOrder`, triggers a WorkflowForge saga (ReserveStock, ChargePayment, CreateShipment). Orders over $500 fail at payment, triggering compensation in reverse.
 
-- Use Coravel `IInvocable` to run your logic directly.
-- Skip WorkflowForge entirely.
+```bash
+dotnet run --project AnimatLabs.WorkflowForge.MassTransitSaga.OrderService
+```
+
+Uses InMemory transport by default. RabbitMQ optional (port 5673 in `docker-compose.azure-local.yml`).
+
+**Blog post:** [MassTransit Saga + WorkflowForge Compensation](https://animatlabs.com)
+
+## Requirements
+
+- .NET 8.0 SDK
+- No Docker required (all demos run standalone)

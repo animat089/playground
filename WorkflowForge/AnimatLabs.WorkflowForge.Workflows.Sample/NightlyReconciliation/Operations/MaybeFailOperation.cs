@@ -8,8 +8,6 @@ public sealed class MaybeFailOperation : WorkflowOperationBase
 {
     public override string Name => "MaybeFail";
 
-    public override bool SupportsRestore => true;
-
     protected override Task<object?> ForgeAsyncCore(
         object? inputData,
         IWorkflowFoundry foundry,

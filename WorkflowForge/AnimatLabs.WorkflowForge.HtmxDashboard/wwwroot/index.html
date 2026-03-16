@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WorkflowForge HTMX Dashboard</title>
+    <script src="/js/htmx.min.js"></script>
+    <script src="/js/htmx-ext-sse.js"></script>
+    <style>
+        body { font-family: system-ui, sans-serif; max-width: 700px; margin: 2em auto; padding: 0 1em; }
+        button { padding: 0.4em 1em; margin-right: 0.5em; cursor: pointer; }
+        #output { border: 1px solid #ccc; padding: 1em; margin-top: 1em; min-height: 120px; }
+        .step { padding: 0.3em 0; }
+    </style>
+</head>
+<body hx-ext="sse">
+    <h1>WorkflowForge + HTMX</h1>
+    <p>Real-time workflow updates via SSE. No custom JavaScript.</p>
+
+    <div>
+        <button hx-get="/workflow/reset"
+                hx-target="#output"
+                hx-swap="innerHTML">Run Order Workflow</button>
+        <button hx-get="/workflow/reset?fail=true"
+                hx-target="#output"
+                hx-swap="innerHTML">Run with Failure</button>
+    </div>
+
+    <div id="output">
+        <p>Click a button to start a workflow.</p>
+    </div>
+
+    <p><small><a href="https://github.com/animatlabs/workflow-forge">WorkflowForge</a> |
+    <a href="https://htmx.org">HTMX</a></small></p>
+</body>
+</html>

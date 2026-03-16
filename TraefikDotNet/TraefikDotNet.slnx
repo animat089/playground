@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ApiService/ApiService.csproj" />
+  <Project Path="WebService/WebService.csproj" />
+</Solution>

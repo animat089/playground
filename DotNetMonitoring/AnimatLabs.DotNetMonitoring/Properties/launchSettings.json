@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "AnimatLabs.DotNetMonitoring": {
+      "commandName": "Project",
+      "launchBrowser": false,
+      "applicationUrl": "http://localhost:5076",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

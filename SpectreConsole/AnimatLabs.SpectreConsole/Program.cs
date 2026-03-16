@@ -4,7 +4,6 @@ AnsiConsole.Write(new FigletText("Project Health").Color(Color.Cyan1));
 AnsiConsole.MarkupLine("[grey]Spectre.Console Demo — Project Health Checker[/]");
 AnsiConsole.WriteLine();
 
-// Simulated project data
 var projects = new[]
 {
     new ProjectInfo("AnimatLabs.Core", "net8.0", 12, 0, 95.2, "Healthy"),
@@ -14,7 +13,6 @@ var projects = new[]
     new ProjectInfo("AnimatLabs.Tests", "net8.0", 0, 0, 100.0, "Healthy"),
 };
 
-// Progress bar
 AnsiConsole.Status()
     .Spinner(Spinner.Known.Dots)
     .SpinnerStyle(Style.Parse("cyan"))
@@ -29,7 +27,6 @@ AnsiConsole.Status()
 
 AnsiConsole.WriteLine();
 
-// Project table
 var table = new Table()
     .Border(TableBorder.Rounded)
     .Title("[bold cyan]Solution Health Report[/]")
@@ -68,7 +65,6 @@ foreach (var p in projects)
 AnsiConsole.Write(table);
 AnsiConsole.WriteLine();
 
-// Dependency tree
 var tree = new Tree("[bold cyan]Dependency Tree[/]")
     .Style(Style.Parse("dim"));
 
@@ -96,7 +92,6 @@ massTransitNode.AddNode("[red]RabbitMQ.Client 6.2.1[/] [red bold]3 CVEs[/]");
 AnsiConsole.Write(tree);
 AnsiConsole.WriteLine();
 
-// Summary with bar chart
 var chart = new BarChart()
     .Label("[bold cyan]Test Coverage by Project[/]")
     .CenterLabel()
@@ -111,7 +106,6 @@ foreach (var p in projects)
 AnsiConsole.Write(chart);
 AnsiConsole.WriteLine();
 
-// Final rule
 var healthy = projects.Count(p => p.Status == "Healthy");
 var total = projects.Length;
 var overallColor = healthy == total ? "green" : healthy >= total - 1 ? "yellow" : "red";

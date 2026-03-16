@@ -1,24 +1,28 @@
 # Spectre.Console: Project Health Checker
 
-Beautiful CLI output with Spectre.Console. No more `Console.WriteLine`.
+Tables, trees, charts, and spinners in the terminal using Spectre.Console.
 
-## What This Demonstrates
+## What It Does
 
-- **Tables**: Project health report with colored status indicators
-- **Trees**: Dependency tree with vulnerability annotations
-- **Bar charts**: Test coverage visualization per project
-- **Progress/Status**: Spinner animation while scanning
-- **FigletText**: ASCII art headers
-- **Rules**: Section dividers with dynamic content
+- **Tables** -- health report with colored status per project
+- **Trees** -- dependency graph with vulnerability badges
+- **Bar charts** -- test coverage percentages
+- **Spinner** -- animated status while scanning
+- **FigletText** -- ASCII art header
+- **Rules** -- summary divider with pass/fail count
 
-## Run It
+## Run
+
+From the `SpectreConsole` folder:
 
 ```bash
 cd AnimatLabs.SpectreConsole
 dotnet run
 ```
 
+You'll see a Figlet header, a spinner, a health report table, a dependency tree, coverage bars, and a "3/5 projects healthy" summary rule.
+
 ## Requirements
 
 - .NET 8.0 SDK
-- A terminal that supports ANSI colors (most modern terminals do)
+- ANSI color support (default in most terminals)

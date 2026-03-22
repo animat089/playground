@@ -1,32 +1,29 @@
 # Production Monitoring for .NET
 
-Health checks, Prometheus metrics, Grafana dashboards, and Serilog structured logging for an ASP.NET Core app. Pairs with the `docker-compose.azure-local.yml` stack from the blog repo.
+Health checks, Prometheus metrics, Grafana dashboards, and Serilog structured logging for an ASP.NET Core app.
 
 ## What It Does
 
-- **Liveness probe** (`/health/live`) -- is the process alive?
-- **Readiness probe** (`/health/ready`) -- can it handle traffic? (checks PostgreSQL)
-- **Prometheus metrics** (`/metrics`) -- request duration, order processing histogram, success/failure counters
-- **Custom business metrics** -- `app_order_duration_seconds` histogram, `app_orders_total` counter with status labels
-- **Serilog** structured request logging
+- Liveness (`/health/live`): process is running
+- Readiness (`/health/ready`): PostgreSQL reachable (traffic gate)
+- Prometheus (`/metrics`): HTTP metrics plus `app_order_duration_seconds` and `app_orders_total` (status labels)
+- Serilog: structured request logging
 
 ## Run It
 
 ### 1. Start Infrastructure
 
-Using the blog's `docker-compose.azure-local.yml`:
-
 ```bash
-cd animatlabs.github.io
-docker-compose -f docker-compose.azure-local.yml up postgres prometheus grafana -d
+docker-compose up -d
 ```
 
 This starts:
+
 - PostgreSQL on `:5432`
 - Prometheus on `:9090`
 - Grafana on `:3000` (admin/admin)
 
-**Note:** Copy `Config/prometheus.yml` to the location expected by `docker-compose.azure-local.yml`, or mount it directly.
+Prometheus scrapes `host.docker.internal:5076` so it can reach the app on the host.
 
 ### 2. Start the App
 
@@ -44,16 +41,17 @@ curl -X POST http://localhost:5076/api/orders
 
 ### 4. View Dashboards
 
-- **Health checks:** http://localhost:5076/health/live and http://localhost:5076/health/ready
-- **Raw metrics:** http://localhost:5076/metrics
-- **Prometheus:** http://localhost:9090 -- query `app_orders_total` or `app_order_duration_seconds_bucket`
-- **Grafana:** http://localhost:3000 -- add Prometheus as a data source (http://prometheus:9090)
+- Health: http://localhost:5076/health/live and http://localhost:5076/health/ready
+- Raw metrics: http://localhost:5076/metrics
+- Prometheus: http://localhost:9090 (try `app_orders_total` or `app_order_duration_seconds_bucket`)
+- Grafana: http://localhost:3000. Add Prometheus as a data source: `http://prometheus:9090` from containers, or `http://host.docker.internal:9090` from the host
 
 ## Without Docker
 
-The app runs fine without Docker. Health checks will report "Unhealthy" for PostgreSQL (expected), but liveness and metrics still work. Good for quick local testing.
+The app runs without Docker. PostgreSQL shows as unhealthy on readiness (expected); liveness and metrics still work.
 
 ## Requirements
 
 - .NET 8.0 SDK
-- Docker (for PostgreSQL, Prometheus, Grafana) -- optional for basic health check testing
+- Any OCI container runtime (Docker, Podman, Rancher Desktop) with Compose support, optional for quick local runs
+- Grafana (AGPL v3) is free to use but carries copyleft obligations. For AGPL-sensitive setups, use Prometheus alone at `http://localhost:9090` for queries without Grafana.

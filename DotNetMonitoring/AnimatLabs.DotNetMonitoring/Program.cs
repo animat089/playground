@@ -31,25 +31,21 @@ try
 
     app.UseSerilogRequestLogging();
 
-    // Prometheus metrics endpoint
     app.UseHttpMetrics();
     app.MapMetrics();
 
-    // Liveness probe -- is the process alive?
     app.MapHealthChecks("/health/live", new HealthCheckOptions
     {
         Predicate = check => check.Tags.Contains("live"),
         ResponseWriter = WriteHealthResponse
     });
 
-    // Readiness probe -- can it handle traffic? (checks DB connectivity)
     app.MapHealthChecks("/health/ready", new HealthCheckOptions
     {
         Predicate = check => check.Tags.Contains("ready"),
         ResponseWriter = WriteHealthResponse
     });
 
-    // Simulated order endpoint with custom metrics
     app.MapPost("/api/orders", async (OrderMetrics metrics) =>
     {
         var sw = Stopwatch.StartNew();
@@ -67,7 +63,6 @@ try
             : Results.Problem("Payment gateway timeout", statusCode: 503);
     });
 
-    // Simple status page
     app.MapGet("/", () => Results.Content("""
         <h2>Monitoring Demo</h2>
         <ul>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CDC Event Stream</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: system-ui, sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+        h1 { margin-bottom: 0.5rem; }
+        p { color: #666; margin-bottom: 1.5rem; }
+        .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        h2 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .log { border: 1px solid #ddd; padding: 0.75rem; min-height: 300px; max-height: 500px; overflow-y: auto; font-size: 0.85rem; font-family: monospace; white-space: pre-wrap; word-break: break-all; }
+        .status { font-size: 0.8rem; color: #999; margin-top: 0.25rem; }
+    </style>
+</head>
+<body>
+    <h1>CDC Event Stream</h1>
+    <p>Insert or update rows in the orders table. Events appear here via SignalR (left) and SSE (right).</p>
+
+    <div class="columns">
+        <div>
+            <h2>SignalR</h2>
+            <div id="signalr-log" class="log"></div>
+            <div id="signalr-status" class="status">connecting...</div>
+        </div>
+        <div>
+            <h2>Server-Sent Events</h2>
+            <div id="sse-log" class="log"></div>
+            <div id="sse-status" class="status">connecting...</div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.0/signalr.min.js"></script>
+    <script>
+        var topic = "orders.public.orders";
+
+        function append(el, text) {
+            var ts = new Date().toLocaleTimeString();
+            el.textContent += ts + " " + text + "\n";
+            el.scrollTop = el.scrollHeight;
+        }
+
+        // SignalR
+        var conn = new signalR.HubConnectionBuilder().withUrl("/hub/events").withAutomaticReconnect().build();
+        var srLog = document.getElementById("signalr-log");
+        var srStatus = document.getElementById("signalr-status");
+
+        conn.on("ReceiveEvent", function(json) {
+            append(srLog, json);
+        });
+
+        conn.start().then(function() {
+            srStatus.textContent = "connected";
+            return conn.invoke("JoinTopic", topic);
+        }).catch(function(err) {
+            srStatus.textContent = "error: " + err;
+        });
+
+        // SSE
+        var sseLog = document.getElementById("sse-log");
+        var sseStatus = document.getElementById("sse-status");
+        var source = new EventSource("/sse/events");
+
+        source.onopen = function() { sseStatus.textContent = "connected"; };
+        source.onmessage = function(e) { append(sseLog, e.data); };
+        source.onerror = function() { sseStatus.textContent = "disconnected"; };
+    </script>
+</body>
+</html>

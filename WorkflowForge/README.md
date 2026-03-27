@@ -60,3 +60,5 @@ Uses InMemory transport by default. RabbitMQ optional; see OrderService README.
 
 - .NET 8.0 SDK
 - No Docker required (all demos run standalone)
+
+**Documentation:** [animatlabs.com/workflow-forge](https://animatlabs.com/workflow-forge)

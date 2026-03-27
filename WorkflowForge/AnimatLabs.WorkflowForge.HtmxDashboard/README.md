@@ -26,3 +26,5 @@ No `<script>` blocks. Pure HTMX attributes.
 ## Requirements
 
 - .NET 8.0 SDK
+
+**Documentation:** [animatlabs.com/workflow-forge](https://animatlabs.com/workflow-forge)

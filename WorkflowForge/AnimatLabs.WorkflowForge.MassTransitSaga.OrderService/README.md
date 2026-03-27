@@ -30,3 +30,5 @@ Management UI at http://localhost:15672 (guest/guest).
 
 - .NET 8.0 SDK
 - No Docker required (InMemory by default)
+
+**Documentation:** [animatlabs.com/workflow-forge](https://animatlabs.com/workflow-forge)

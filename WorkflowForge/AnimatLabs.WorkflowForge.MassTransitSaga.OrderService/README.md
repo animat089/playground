@@ -11,8 +11,8 @@ dotnet run --project AnimatLabs.WorkflowForge.MassTransitSaga.OrderService
 ```
 
 Uses InMemory transport. Auto-submits two test orders:
-- **$99.99** -- succeeds (all 3 steps)
-- **$999.99** -- fails at payment (compensation rolls back stock)
+- **$99.99**: succeeds (all 3 steps)
+- **$999.99**: fails at payment (compensation rolls back stock)
 
 ## Switch to RabbitMQ (Optional)
 

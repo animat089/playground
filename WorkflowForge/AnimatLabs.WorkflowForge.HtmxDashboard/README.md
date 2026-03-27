@@ -1,6 +1,6 @@
 # HTMX + WorkflowForge Dashboard
 
-Workflow dashboard -- no custom JavaScript. HTMX SSE extension handles every UI update.
+Workflow dashboard with no custom JavaScript. HTMX SSE extension handles every UI update.
 
 ## Run
 
@@ -16,7 +16,7 @@ Two buttons: "Run Order Workflow" runs 5 steps to completion. "Run with Failure"
 
 ## How It Works
 
-1. Button fires `hx-get="/workflow/reset"` -- returns HTML with `sse-connect`
+1. Button fires `hx-get="/workflow/reset"`; returns HTML with `sse-connect`
 2. HTMX opens an SSE connection to `/workflow/stream`
 3. Server sends `event: step` with HTML fragments, HTMX swaps them in
 4. `event: done` swaps the final status

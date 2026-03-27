@@ -30,7 +30,7 @@ dotnet run --project AnimatLabs.WorkflowForge.CoravelScheduledWorkflows
 
 Toggle failure in `appsettings.json` via `ReconciliationJob:DemoFailure`.
 
-**Blog post:** [WorkflowForge + Coravel: Scheduled Workflows](https://animatlabs.com)
+**Blog post:** [WorkflowForge + Coravel: Scheduled Workflows](https://animatlabs.com/technical/.net/workflow/workflowforge-coravel-scheduled-workflows/)
 
 ### HTMX Dashboard (Real-Time Workflow Visualization)
 
@@ -42,7 +42,7 @@ dotnet run --project AnimatLabs.WorkflowForge.HtmxDashboard
 
 Open `http://localhost:5075`. Click "Run Order Workflow" or "Run with Failure."
 
-**Blog post:** [HTMX + WorkflowForge: Live Workflow Dashboard](https://animatlabs.com)
+**Blog post:** [HTMX + WorkflowForge: Live Workflow Dashboard](https://animatlabs.com/technical/.net/workflow/htmx-dotnet/)
 
 ### MassTransit Saga (Message-Driven Compensation)
 
@@ -52,9 +52,9 @@ Single-service demo. MassTransit consumer receives `SubmitOrder`, triggers a Wor
 dotnet run --project AnimatLabs.WorkflowForge.MassTransitSaga.OrderService
 ```
 
-Uses InMemory transport by default. RabbitMQ optional -- see OrderService README.
+Uses InMemory transport by default. RabbitMQ optional; see OrderService README.
 
-**Blog post:** [MassTransit Saga + WorkflowForge Compensation](https://animatlabs.com)
+**Blog post:** [MassTransit Saga + WorkflowForge Compensation](https://animatlabs.com/technical/.net/workflow/masstransit-workflowforge-saga/)
 
 ## Requirements
 

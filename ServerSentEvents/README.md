@@ -15,9 +15,9 @@ Open `http://localhost:5074`. Three sections: a live clock, an order stream with
 
 ## Patterns
 
-1. **Live Clock** (`/events/clock`) -- `IAsyncEnumerable`, one event type
-2. **Order Stream** (`/events/orders`) -- named events on a single connection
-3. **System Metrics** (`/events/metrics`) -- event IDs for reconnection
+1. **Live Clock** (`/events/clock`): `IAsyncEnumerable`, one event type
+2. **Order Stream** (`/events/orders`): named events on a single connection
+3. **System Metrics** (`/events/metrics`): event IDs for reconnection
 
 All three start automatically when the page loads.
 

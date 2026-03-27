@@ -4,12 +4,12 @@ Tables, trees, charts, and spinners in the terminal using Spectre.Console.
 
 ## What It Does
 
-- **Tables** -- health report with colored status per project
-- **Trees** -- dependency graph with vulnerability badges
-- **Bar charts** -- test coverage percentages
-- **Spinner** -- animated status while scanning
-- **FigletText** -- ASCII art header
-- **Rules** -- summary divider with pass/fail count
+- **Tables:** a health report with colored status per project
+- Dependency **trees** show the graph with vulnerability badges
+- Bar charts for test coverage percentages
+- A **spinner** runs while scanning
+- FigletText renders the ASCII art header
+- Rules add a summary divider with pass/fail count
 
 ## Run
 

@@ -29,7 +29,7 @@ Templates live under tools/AnimatLabs.SourceGenerators.T4/Templates and the gene
 ## Build + Test
 
 ```bash
-# From SourceGenerators/AnimatLabs.SourceGenerators
+cd playground/SourceGenerators
 
 dotnet build AnimatLabs.SourceGenerators.sln
 

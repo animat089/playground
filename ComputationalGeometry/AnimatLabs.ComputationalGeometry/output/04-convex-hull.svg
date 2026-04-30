@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="32.05 30.43 333.32 236.60" width="666.63" height="473.19">
+  <rect width="100%" height="100%" fill="#fafafa" />
+  <polygon points="283.86,50.43 98.00,54.89 60.23,61.48 55.10,79.87 52.72,104.34 52.05,238.16 310.77,247.03 345.37,231.56 339.57,85.20 283.86,50.43" fill="#3498db" stroke="#2c3e50" stroke-width="1" opacity="0.20" />
+  <circle cx="345.37" cy="231.56" r="3.00" fill="#e74c3c" />
+  <circle cx="273.06" cy="212.33" r="3.00" fill="#e74c3c" />
+  <circle cx="271.63" cy="59.66" r="3.00" fill="#e74c3c" />
+  <circle cx="55.10" cy="79.87" r="3.00" fill="#e74c3c" />
+  <circle cx="108.41" cy="176.02" r="3.00" fill="#e74c3c" />
+  <circle cx="322.93" cy="149.04" r="3.00" fill="#e74c3c" />
+  <circle cx="106.74" cy="142.18" r="3.00" fill="#e74c3c" />
+  <circle cx="73.61" cy="219.29" r="3.00" fill="#e74c3c" />
+  <circle cx="219.96" cy="101.05" r="3.00" fill="#e74c3c" />
+  <circle cx="52.05" cy="238.16" r="3.00" fill="#e74c3c" />
+  <circle cx="98.00" cy="54.89" r="3.00" fill="#e74c3c" />
+  <circle cx="283.86" cy="50.43" r="3.00" fill="#e74c3c" />
+  <circle cx="276.39" cy="177.56" r="3.00" fill="#e74c3c" />
+  <circle cx="255.53" cy="229.88" r="3.00" fill="#e74c3c" />
+  <circle cx="206.30" cy="78.07" r="3.00" fill="#e74c3c" />
+  <circle cx="228.80" cy="220.47" r="3.00" fill="#e74c3c" />
+  <circle cx="277.53" cy="64.45" r="3.00" fill="#e74c3c" />
+  <circle cx="227.50" cy="68.71" r="3.00" fill="#e74c3c" />
+  <circle cx="325.21" cy="91.07" r="3.00" fill="#e74c3c" />
+  <circle cx="172.14" cy="209.45" r="3.00" fill="#e74c3c" />
+  <circle cx="329.52" cy="227.66" r="3.00" fill="#e74c3c" />
+  <circle cx="197.90" cy="88.52" r="3.00" fill="#e74c3c" />
+  <circle cx="277.14" cy="72.70" r="3.00" fill="#e74c3c" />
+  <circle cx="105.32" cy="126.82" r="3.00" fill="#e74c3c" />
+  <circle cx="98.95" cy="145.63" r="3.00" fill="#e74c3c" />
+  <circle cx="260.04" cy="80.98" r="3.00" fill="#e74c3c" />
+  <circle cx="53.30" cy="159.28" r="3.00" fill="#e74c3c" />
+  <circle cx="296.95" cy="242.02" r="3.00" fill="#e74c3c" />
+  <circle cx="88.49" cy="198.28" r="3.00" fill="#e74c3c" />
+  <circle cx="67.10" cy="70.20" r="3.00" fill="#e74c3c" />
+  <circle cx="158.96" cy="73.52" r="3.00" fill="#e74c3c" />
+  <circle cx="238.50" cy="60.87" r="3.00" fill="#e74c3c" />
+  <circle cx="60.23" cy="61.48" r="3.00" fill="#e74c3c" />
+  <circle cx="271.03" cy="73.38" r="3.00" fill="#e74c3c" />
+  <circle cx="310.77" cy="247.03" r="3.00" fill="#e74c3c" />
+  <circle cx="328.72" cy="122.24" r="3.00" fill="#e74c3c" />
+  <circle cx="304.44" cy="91.92" r="3.00" fill="#e74c3c" />
+  <circle cx="52.72" cy="104.34" r="3.00" fill="#e74c3c" />
+  <circle cx="209.44" cy="167.38" r="3.00" fill="#e74c3c" />
+  <circle cx="123.51" cy="178.23" r="3.00" fill="#e74c3c" />
+  <circle cx="186.02" cy="110.20" r="3.00" fill="#e74c3c" />
+  <circle cx="270.87" cy="58.57" r="3.00" fill="#e74c3c" />
+  <circle cx="182.06" cy="138.22" r="3.00" fill="#e74c3c" />
+  <circle cx="302.41" cy="92.41" r="3.00" fill="#e74c3c" />
+  <circle cx="124.72" cy="176.32" r="3.00" fill="#e74c3c" />
+  <circle cx="339.57" cy="85.20" r="3.00" fill="#e74c3c" />
+  <circle cx="94.51" cy="111.23" r="3.00" fill="#e74c3c" />
+  <circle cx="180.21" cy="212.83" r="3.00" fill="#e74c3c" />
+  <circle cx="127.99" cy="137.73" r="3.00" fill="#e74c3c" />
+  <circle cx="97.56" cy="189.95" r="3.00" fill="#e74c3c" />
+  <circle cx="197.17" cy="149.83" r="5.00" fill="#f39c12" />
+  <text x="202.17" y="144.83" font-size="10" fill="#333" font-family="monospace">centroid</text>
+</svg>

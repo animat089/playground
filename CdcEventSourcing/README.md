@@ -1,13 +1,20 @@
 # CDC Event Sourcing
 
-Captures database row changes as typed domain events using Debezium, Kafka, and .NET.
+Captures PostgreSQL row changes with Debezium, streams them through Apache Kafka, and maps them to typed .NET events.
 
-PostgreSQL WAL feeds Debezium, which streams change events into Kafka. A .NET console app consumes those events and maps them to `OrderCreated`, `OrderUpdated`, and delete notifications.
+This sample keeps the application write path simple: write to PostgreSQL, let Debezium read the WAL, and let a .NET consumer react to committed changes.
 
 ## Prerequisites
 
 - Any OCI container runtime (Docker, Podman, Rancher Desktop) with Compose support
 - .NET 8 SDK
+
+The compose file uses free/open-source images:
+
+- `postgres:16-alpine`
+- `apache/kafka:3.7.0` in KRaft mode
+- `debezium/connect:2.5`
+- `provectuslabs/kafka-ui`
 
 ## Run
 
@@ -24,10 +31,12 @@ Images are free and open-source. Kafka uses the official `apache/kafka` image (A
 Wait about 30 seconds for Debezium to be ready, then register the connector:
 
 ```bash
-curl -X POST http://localhost:8083/connectors \
+curl.exe -X POST http://localhost:8083/connectors \
   -H "Content-Type: application/json" \
   -d @register-connector.json
 ```
+
+On macOS/Linux, `curl` is fine. On Windows PowerShell, use `curl.exe`.
 
 Run the consumer:
 
@@ -36,19 +45,43 @@ cd AnimatLabs.CdcEventSourcing
 dotnet run
 ```
 
+Expected snapshot output:
+
+```text
+Listening on orders.public.orders. Insert or update rows in the orders table to see events.
+Press Ctrl+C to stop.
+
+[OrderCreated] #1 alice bought 2x Widget A for $49.98
+[OrderCreated] #2 bob bought 1x Widget B for $24.99
+[OrderCreated] #3 carol bought 5x Widget C for $124.95
+```
+
 Open another terminal and insert or update rows:
 
 ```bash
-docker exec -it cdc-postgres psql -U postgres -d orders -c \
+docker exec cdc-postgres psql -U postgres -d orders -c \
   "INSERT INTO orders (customer, product, quantity, total_amount) VALUES ('dave', 'Widget D', 3, 74.97);"
 ```
 
 ```bash
-docker exec -it cdc-postgres psql -U postgres -d orders -c \
-  "UPDATE orders SET status = 'shipped' WHERE customer = 'alice';"
+docker exec cdc-postgres psql -U postgres -d orders -c \
+  "UPDATE orders SET status = 'shipped' WHERE customer = 'dave';"
 ```
 
-The consumer prints typed domain events as they arrive.
+```bash
+docker exec cdc-postgres psql -U postgres -d orders -c \
+  "DELETE FROM orders WHERE customer = 'dave';"
+```
+
+Expected CDC output:
+
+```text
+[OrderCreated] #4 dave bought 3x Widget D for $74.97
+[OrderUpdated] #4 pending -> shipped (dave)
+[OrderDeleted] #4 dave
+```
+
+The update/delete output depends on `ALTER TABLE orders REPLICA IDENTITY FULL;` in `setup.sql`. Without it, PostgreSQL only sends the primary key for previous row values.
 
 ## URLs
 

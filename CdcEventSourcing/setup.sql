@@ -13,3 +13,5 @@ INSERT INTO orders (customer, product, quantity, total_amount, status) VALUES
     ('alice', 'Widget A', 2, 49.98, 'pending'),
     ('bob', 'Widget B', 1, 24.99, 'confirmed'),
     ('carol', 'Widget C', 5, 124.95, 'shipped');
+
+ALTER TABLE orders REPLICA IDENTITY FULL;

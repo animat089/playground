@@ -24,6 +24,9 @@ app.MapGet("/sse/events", async (Channel<string> channel, HttpContext ctx, Cance
     var feature = ctx.Features.Get<Microsoft.AspNetCore.Http.Features.IHttpResponseBodyFeature>();
     feature?.DisableBuffering();
 
+    await ctx.Response.WriteAsync(": connected\n\n", ct);
+    await ctx.Response.Body.FlushAsync(ct);
+
     await foreach (var json in channel.Reader.ReadAllAsync(ct))
     {
         await ctx.Response.WriteAsync($"data: {json}\n\n", ct);
